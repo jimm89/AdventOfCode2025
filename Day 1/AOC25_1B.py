@@ -29,16 +29,22 @@ for move in moves:
     #determine the distance moved (note we must convert the text from the instruction to an integer)
     change = int(move[1:])
     
-    #change the position by the required amount, and then use modular arithmetic to ensure the answer remains between 0 and 99
-    if direction == 'R':
-        pos = (pos + change) % dial_size
+    #determine how many complete turns the dial does (each of which will cause us to pass zero exactly once
+    ans += change // dial_size
     
-    else:
-        pos = (pos - change) % dial_size
+    #remove the complete turns from consideration
+    change %= dial_size
     
-    #if we are at 0, increment our answer variable
-    if pos == 0:
+    #make the change negative if direction is left
+    if direction == 'L':
+        change *= -1  
+    
+    #determine whether the final partial change will cause us to pass 0, and increment our answer variable if so
+    if pos + change >= dial_size or (pos > 0 and pos + change <= 0):
         ans += 1
+    
+    #change the position by the required amount, and then use modular arithmetic to ensure the answer remains between 0 and 99
+    pos = (pos + change) % dial_size
 
 #print the answer
 print(ans)
