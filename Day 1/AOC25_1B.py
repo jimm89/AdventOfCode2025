@@ -29,7 +29,7 @@ for move in moves:
     #determine the distance moved (note we must convert the text from the instruction to an integer)
     change = int(move[1:])
     
-    #determine how many complete turns the dial does (each of which will cause us to pass zero exactly once
+    #determine how many complete turns the dial does (each of which will cause us to pass zero exactly once)
     ans += change // dial_size
     
     #remove the complete turns from consideration
