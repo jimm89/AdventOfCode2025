@@ -1,3 +1,4 @@
+# open the file
 import sys
 read = sys.stdin.read
 f = open("AOC25_2_in.txt")
