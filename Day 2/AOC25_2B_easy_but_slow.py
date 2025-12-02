@@ -3,7 +3,7 @@ read = sys.stdin.read
 f = open("AOC25_2_in.txt")
 
 #read in the file, and save the information in an array which we call 'rngs'
-#the 'split' function breaks the input file up, and the ',' argument tells when to break it up (in this case, every new line)
+#the 'split' function breaks the input file up, and the ',' argument tells when to break it up (in this case, comma)
 rngs = f.read().split(',')
 
 def is_invalid_len(num, rep):
