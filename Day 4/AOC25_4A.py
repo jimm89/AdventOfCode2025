@@ -21,7 +21,7 @@ def count_neighbours(x, y):
         for dy in range(-1, 2):
             
             # if the y-shift takes us out of range (because we were at the edge of the grid), we do not consider this value
-            if y + dy < 0 or y + dy >= len(rolls[i]):
+            if y + dy < 0 or y + dy >= len(rolls[x]):
                 continue
             
             # if there is no shift at all, it is not a neighbour, it is the cell itself, so ignore
