@@ -1,7 +1,6 @@
 # open the file
 import sys
 from collections import defaultdict as dd
-from functools import cache
 read = sys.stdin.read
 f = open("AOC25_11_in.txt")
 
