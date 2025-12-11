@@ -26,15 +26,20 @@ for i, (_in, *_outs) in enumerate (inp):
     for _out in _outs:
         G[index_lookup[_in[:-1]]].append(index_lookup[_out])
 
-@cache
+dfs_store = [-1] * (n + 1)
+
 def dfs(u):
+    
+    if dfs_store[u] != -1:
+        return dfs_store[u]
     
     if u == n:
         return 1
     
-    for v in G[u]:
-        return sum(dfs(v) for v in G[u])
+    ret = sum(dfs(v) for v in G[u])
+
+    dfs_store[u] == ret
     
-    return
+    return ret
 
 print(dfs(index_lookup['you']))

@@ -30,10 +30,15 @@ global dac, fft
 dac = index_lookup['dac']
 fft = index_lookup['fft']
 
-@cache
+
+dfs_store = [[[-1 for k in range(2)] for j in range(2)] for i in range(n + 1)]
+
 def dfs(u, vis_dac = False, vis_fft = False):
     
     global dac, fft
+    
+    if dfs_store[u][vis_dac][vis_fft] != -1:
+        return dfs_store[u][vis_dac][vis_fft]
     
     if u == n:
         
@@ -43,11 +48,9 @@ def dfs(u, vis_dac = False, vis_fft = False):
         
         return 0
     
-    ret = 0
+    ret = sum(dfs(v, vis_dac or (v == dac), vis_fft or (v == fft)) for v in G[u])
     
-    for v in G[u]:
-       
-        ret += dfs(v, vis_dac or (v == dac), vis_fft or (v == fft))
+    dfs_store[u][vis_dac][vis_fft] = ret
     
     return ret
 
